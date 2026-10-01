@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+/* Custom Stylish Font Utilities */
+.font-brand-serif {
+  font-family: 'Cinzel', serif;
+}
+
+.font-brand-script {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
