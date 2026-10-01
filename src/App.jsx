@@ -7,7 +7,6 @@ import GalleryTab from './components/GalleryTab';
 import ContactsTab from './components/ContactsTab';
 import GoalsTab from './components/GoalsTab';
 import DiaryTab from './components/DiaryTab';
-import HealthTab from './components/HealthTab';
 
 export default function App() {
   const [user, setUser] = useState(null);
