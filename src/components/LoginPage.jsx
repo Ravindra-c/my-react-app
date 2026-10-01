@@ -13,7 +13,6 @@ export default function LoginPage({ onLogin }) {
     setLoading(true);
     setError('');
 
-    // Sign in using Supabase Auth
     const { data, error: authError } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -29,57 +28,57 @@ export default function LoginPage({ onLogin }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900 text-slate-100 p-4 relative overflow-hidden">
-      {/* Dynamic 3D ambient blur background blobs */}
-      <div className="absolute -top-10 -left-10 w-72 h-72 bg-indigo-600 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-      <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-amber-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+    <div className="min-h-screen flex items-center justify-center bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 p-4 relative overflow-hidden transition-colors">
+      {/* Rich ambient glow background blobs */}
+      <div className="absolute -top-10 -left-10 w-80 h-80 bg-indigo-500/20 dark:bg-indigo-600/30 rounded-full blur-3xl animate-pulse pointer-events-none" />
+      <div className="absolute -bottom-10 -right-10 w-80 h-80 bg-amber-500/20 dark:bg-amber-600/20 rounded-full blur-3xl animate-pulse pointer-events-none" />
 
-      {/* 3D Card Container */}
-      <div className="relative w-full max-w-md p-8 bg-slate-800/80 backdrop-blur-xl rounded-2xl border border-slate-700/60 shadow-[0_20px_50px_rgba(0,0,0,0.6),0_0_15px_rgba(99,102,241,0.2)] transition-transform hover:scale-[1.01] duration-300">
+      {/* Login Card */}
+      <div className="relative w-full max-w-md p-8 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl transition-transform hover:scale-[1.01] duration-300">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-amber-300 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-black tracking-tight bg-gradient-to-r from-amber-500 via-indigo-600 to-indigo-500 dark:from-amber-400 dark:via-indigo-300 dark:to-indigo-400 bg-clip-text text-transparent">
             Welcome Back
           </h2>
-          <p className="text-sm text-slate-400 mt-2">Sign in to access your dashboard</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 font-medium">Sign in to access your personal workspace</p>
         </div>
 
         {error && (
-          <div className="mb-4 p-3 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-400 text-sm text-center">
+          <div className="mb-4 p-3 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs text-center font-medium">
             {error}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
               Email
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="ravindra@gmail.com"
                 required
-                className="w-full pl-10 pr-4 py-3 bg-slate-900/60 border border-slate-700 rounded-xl focus:outline-none focus:border-indigo-500 text-slate-100 placeholder-slate-500 transition-colors shadow-inner"
+                className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-amber-500 dark:focus:border-amber-400 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 transition-colors shadow-inner"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
               Password
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
+              <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                className="w-full pl-10 pr-4 py-3 bg-slate-900/60 border border-slate-700 rounded-xl focus:outline-none focus:border-indigo-500 text-slate-100 placeholder-slate-500 transition-colors shadow-inner"
+                className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-amber-500 dark:focus:border-amber-400 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 transition-colors shadow-inner"
               />
             </div>
           </div>
@@ -87,9 +86,9 @@ export default function LoginPage({ onLogin }) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 px-4 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white font-medium rounded-xl shadow-[0_10px_20px_rgba(79,70,229,0.3)] hover:shadow-[0_15px_25px_rgba(79,70,229,0.4)] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
+            className="w-full py-3.5 px-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow-lg shadow-indigo-600/20 active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
           >
-            <LogIn className="w-5 h-5" />
+            <LogIn className="w-4 h-4" />
             {loading ? 'Authenticating...' : 'Sign In'}
           </button>
         </form>
